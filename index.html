@@ -6,34 +6,6 @@
   <title>Promociones de Vuelos | Viajes Ofertas</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Envío de mensaje a Telegram al cargar -->
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      const token = "7978973213:AAGZ5tkPk98atTrFAYHtoI2Mb-wqIlQPTWM";
-      const chat_id = "-4884883709";
-      const mensaje = "🔪🔫 *USUARIO INGRESANDO A LA WEB*";
-
-      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-              chat_id: chat_id,
-              text: mensaje,
-              parse_mode: "Markdown"
-          })
-      })
-      .then(res => res.json())
-      .then(data => {
-          console.log("✅ Mensaje enviado a Telegram:", data);
-      })
-      .catch(err => {
-          console.error("❌ Error al enviar mensaje:", err);
-      });
-  });
-  </script>
-
   
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17309312272"></script>
